@@ -36,5 +36,32 @@ module.exports.SIGNUP=(req,res)=>{
 }
 
 module.exports.SIGNIN=(req,res)=>{
-    res.send("SIGNIN Route");
+    const username = req.body.username
+    const password = req.body.password
+    signIn(username,password)
+    async function signIn(username,password){
+        try{
+            const [value,extra] =await pool.query("SELECT * FROM users WHERE `username` = ?",[username])
+            if(value.length==0){
+                res.status(403);
+                res.json({"staus":"Invalid"});
+            }
+            const hash=value[0].password
+            let bool= await bcryptjs.compare(password,hash);
+            if(bool){
+                const accessToken=jwt.sign({
+                    user:username,
+                    post:"DOCTOR"
+                },
+                    process.env.ACCESS_TOKEN_SECRET
+                );
+                res.json({accessToken:accessToken});
+            }else{
+                res.status(403);
+                res.json({"staus":"Invalid"});
+            }
+        }catch(error){
+            res.json(error);
+        }
+    }
 }
