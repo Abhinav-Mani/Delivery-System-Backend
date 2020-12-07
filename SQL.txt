@@ -1,0 +1,12 @@
+create database ecommerce;
+use ecommerce;
+create table users (
+username varchar(256) primary key,
+email varchar(256) unique not null,
+pincode varchar(10) not null,
+address varchar(256) not null,
+longitude double not null,
+latitute double not null,
+password varchar(256) not null,
+phoneno varchar(20) not null
+);
