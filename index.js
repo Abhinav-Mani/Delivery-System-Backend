@@ -7,6 +7,7 @@ const app = express();
 const bodyParser = require("body-parser")
 
 const userRoute = require("./Routes/User");
+const adminRoute = require("./Routes/Admin");
 
 app.use((req,res,next)=>{
     res.header('Access-Control-Allow-Origin', "*");
@@ -19,6 +20,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.use("/user",userRoute);
+app.use("/admin",adminRoute);
+
 app.listen(port,()=>{
     console.log(`listening on ${port}`);
 })
