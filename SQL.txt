@@ -10,3 +10,10 @@ latitute double not null,
 password varchar(256) not null,
 phoneno varchar(20) not null
 );
+create table products (
+name varchar(256) not null,
+productID varchar(256) primary key,
+price int not null,
+description varchar(256),
+imageurl varchar(256) not null
+);
