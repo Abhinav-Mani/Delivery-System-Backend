@@ -17,3 +17,15 @@ price int not null,
 description varchar(256),
 imageurl varchar(256) not null
 );
+create table warehouse(
+uuid varchar(256) primary key,
+picode varchar(10) not null,
+longitude double not null,
+latitute double not null
+);
+create table RetailerLocation(
+uuid varchar(256) primary key,
+picode varchar(10) not null,
+longitude double not null,
+latitute double not null
+);
