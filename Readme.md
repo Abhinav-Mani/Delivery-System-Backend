@@ -11,3 +11,5 @@ Base URL:- https://sheltered-ridge-85557.herokuapp.com/
 | /admin/signin |POST|username,password|
 | /product |POST|name,id,price,description,image|
 | /product |GET||
+| /warehouse |POST|uuid,pincode,longitude,latitute|
+| /warehouse|GET||
