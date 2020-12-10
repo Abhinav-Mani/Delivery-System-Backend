@@ -29,3 +29,17 @@ picode varchar(10) not null,
 longitude double not null,
 latitute double not null
 );
+create table warehouseStore(
+	uuid varchar(256),
+    productID varchar(256),
+    quantity int not null,
+    FOREIGN KEY (uuid) REFERENCES warehouse(uuid),
+    FOREIGN KEY (productID) REFERENCES products(productID)
+);
+create table RetailerLocationStore(
+	uuid varchar(256),
+    productID varchar(256),
+    quantity int not null,
+    FOREIGN KEY (uuid) REFERENCES RetailerLocation(uuid),
+    FOREIGN KEY (productID) REFERENCES products(productID)
+);
