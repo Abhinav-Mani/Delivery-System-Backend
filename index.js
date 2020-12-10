@@ -11,6 +11,7 @@ const adminRoute = require("./Routes/Admin");
 const productRoute = require("./Routes/Products");
 const warehouseRoute = require("./Routes/Warehouse");
 const retailerRoute = require("./Routes/Retailer");
+const warehouseStorageRoute = require("./Routes/WarehouseStorage")
 
 app.use((req,res,next)=>{
     res.header('Access-Control-Allow-Origin', "*");
@@ -27,6 +28,7 @@ app.use("/admin",adminRoute);
 app.use("/product",productRoute);
 app.use("/warehouse",warehouseRoute);
 app.use("/retailerlocation",retailerRoute);
+app.use("/warehousestore",warehouseStorageRoute)
 
 app.listen(port,()=>{
     console.log(`listening on ${port}`);
