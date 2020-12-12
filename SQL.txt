@@ -43,3 +43,37 @@ create table RetailerLocationStore(
     FOREIGN KEY (uuid) REFERENCES RetailerLocation(uuid),
     FOREIGN KEY (productID) REFERENCES products(productID)
 );
+create table Orders(
+	username varchar(256) not null,
+    orderID varchar(256) not null primary key,
+    deliveryAddress varchar(256) not null,
+    longitude double not null,
+	latitute double not null,
+    FOREIGN KEY (username) REFERENCES users(username)
+);
+create table OrderDetails(
+	orderID varchar(256) not null,
+    productID varchar(256) not null,
+    quantity int not null,
+    FOREIGN KEY (productID) REFERENCES products(productID),
+    Foreign key (orderID) references Orders(orderID)
+);
+create table Drivers(
+	driverID varchar(256) primary key,
+    vechile varchar(256) not null,
+    longitude double not null,
+	latitute double not null
+);
+create table Delivery(
+	driverID varchar(256) not null,
+    orderID varchar(256) not null,
+    FOREIGN KEY (driverID) REFERENCES Drivers(driverID),
+    FOREIGN KEY (orderID) REFERENCES Orders(orderID)
+);
+create table demand(
+	uuid varchar(256) primary key,
+    FOREIGN KEY (uuid) REFERENCES RetailerLocationStore(uuid),
+    productID varchar(256) not null,
+    quantity int not null,
+    FOREIGN KEY (productID) REFERENCES products(productID)
+);
